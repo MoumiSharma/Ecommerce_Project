@@ -1,0 +1,75 @@
+<%-include('../Includes/header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <%-include('../Includes/navigation.ejs')%>
+   
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Sign In</h3>
+				<div class="d-flex justify-content-end social_icon">
+					<span><i class="fa fa-facebook-square" aria-hidden="true"></i></span>
+					<span><i class="fa fa-google-plus" aria-hidden="true"></i></span>
+					<span><i class="fa fa-twitter" aria-hidden="true"></i></span>
+				</div>
+			</div>
+			<div class="card-body">
+        <form action="/postloginValue" class="" method="POST">
+            <input type="hidden" value="<%=csrf_token%>" name="_csrf">
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+                </div>
+                <input type="email" id="mail" name="email" class="place" placeholder="Enter your mail id.." value="<% if(cookie_value.cookieData){%> <%=cookie_value.cookieData.emailCookie%> <%}%>"></br></br>
+                
+            </div>
+            <div class="input-group form-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+                </div>
+                <input type="password" id="pass" name="password" class="place" placeholder="Enter your password" value="<% if(cookie_value.cookieData){%> <%=cookie_value.cookieData.passwordCookie%> <%}%>"></br></br>
+            </div><br>
+            <div class="row align-items-center remember">
+      
+                <input type="checkbox">Remember Me   
+            </div>
+            <input type="submit" value="Login" class="btn login_btn" style="margin-top:-1rem">
+            </div>
+   
+             
+         
+          
+            <div>
+            <%if(errorMsg){%>
+            <%=errorMsg%>
+        </div><%}%>
+        <%if(error.length>0) {%>
+            <%for(let err of error) {%>
+                <div><h6 style="color:red;"><%=err.msg%></h6></div>
+                <%}%>
+                <%}%>
+
+         
+      </form> 
+    </div>
+    <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+            Don't have an account?<a href="#">Sign Up</a>
+        </div>
+        <div class="d-flex justify-content-center">
+            <a href="#">Forgot your password?</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<%-include('../Includes/footer.ejs')%>
+
+
+
+
+

@@ -1,0 +1,30 @@
+<%-include('../Includes/header.ejs')%>
+<link rel="stylesheet" href="/CSS/style.css">
+</head>
+<body>
+
+    <%-include('../Includes/navigation.ejs')%>
+    <div class="mainDiv">
+    
+    <form action="/postEditValue" enctype="multipart/form-data" class="myform" method="POST">
+      <input type="hidden" value="<%=csrf_token%>" name="_csrf">
+        <h2>Admin,Edit your Product here...</h2>
+        <label for="p_title">Title:</label><br />
+        <input type="text" id="p_title" name="p_title" value="<%=data.pTitle %>" /><br />
+        <label for="p_price">Price:</label><br />
+        <input type="text" id="p_price" name="p_price"  value="<%=data.pPrice %>" /><br />
+      
+        <label for="description">Description:</label><br />
+       <input type="text" name="p_desc"  value="<%=data.pDescription %>"><br/><br/>
+
+      
+        <input type="file" name="p_img" placeholder="upload image" value="<%=data.pimage %>">
+       <input type="hidden" name="oldurl" value="<%=data.pimage %>"><br/>
+       <img src="./../<%=data.p_image%>" alt="">
+
+       <input type="hidden" name="prod_id" value="<%=data._id%>">
+        <input type="submit" value="Update data" />
+      </form>
+    </div>
+      <%-include('../Includes/footer.ejs')%>
+

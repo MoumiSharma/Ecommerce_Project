@@ -1,0 +1,78 @@
+<%-include('../Includes/header.ejs')%>
+    <link rel="stylesheet" href="/CSS/userdetail.css">
+    </head>
+<body>
+        <%-include('../Includes/navigation.ejs')%>
+     
+        <div class="container">
+          <form action="/searchdata" method="POST"  class="srch">
+            <input type="text" name="search">
+            <input type="hidden" value="<%=csrf_token%>" name="_csrf">
+            <button type="submit">Search</button>
+          </form>
+
+          <div class="filter">
+            <label ><strong>Filter Product By:</strong> </label><br>
+            <a href="/viewProduct/Pname" class="filter1">Product Name</a><br>
+            <a href="/viewProduct/Pprice" class="filter1">Product Price(Low to High)<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+            </svg></a><br>
+            <a href="/viewProduct/PpriceHL" class="filter1">Product Price(High to Low)<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="black" class="bi bi-arrow-down-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"/>
+            </svg></a><br>
+            <a href="/viewProduct/Pdes" class="filter1">Product Description</a><br>
+          </div>
+
+          <%if(data.length>0){ %>
+          
+          <div class="row">
+
+            <%for(let x of data){%>
+             
+              <div class="col-md-4 col-sm-6">
+                  <div class="product-grid">
+                      <div class="product-image">
+                          <a href="#">
+                              <img class="pic-1" src="../../<%=x.pimage %>" alt="Image">
+                             
+                          </a>
+                          <ul class="social">
+                              <li><a href="/productDetails/<%=x._id%>" data-tip="Quick View"><i class="fa fa-search"></i></a></li>
+                              <li><a href="" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>
+                              <li>
+                                <a href="/productDetails/<%= x._id %>" class="btn"></a>
+                               
+                           
+                          </ul>
+                          <span class="product-new-label">Sale</span>
+                          
+                      </div>
+                      <ul class="rating">
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                          <li class="fa fa-star"></li>
+                      </ul>
+                      <div class="product-content">
+                          <h3 class="title"><a href="/productDetails/<%=x._id%>"><%=x.pTitle %></a></h3>
+                          <div class="price">Price:Rs.<%=x.pPrice %>
+                            
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+                                   
+                              <%}%>
+                            </div>
+                          
+                        <%}else{%>
+                            <h2>Sorry! Data Not found.</h2>
+                            <%}%>
+                          </div>
+
+                                <%-include('../Includes/footer.ejs')%>
+                                
+
+                                

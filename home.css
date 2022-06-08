@@ -1,0 +1,14 @@
+.home{
+    width: 100%;
+    height:470px;
+   
+    text-align: center;
+    padding-top: 220px;
+    margin-left: 100px;
+}
+.img{
+    background-image: url("https://as1.ftcdn.net/v2/jpg/03/20/68/66/1000_F_320686681_Ur6vdYQgDC9WiijiVfxlRyQffxOgfeFz.jpg" );
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}

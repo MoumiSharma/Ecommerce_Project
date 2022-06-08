@@ -1,0 +1,12 @@
+.text-center {
+  width: 1200px;
+  margin-bottom: 0% !important;
+  margin-left: 0% !important;
+}
+.width {
+  height: fit-content !important;
+  width: 100%;
+}
+.container {
+  margin-top: 2rem;
+}

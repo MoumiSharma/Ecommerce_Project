@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="/CSS/header.css">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link <%= path==='/user/products' ? 'active' : '' %>"  aria-current="page" href="/user/products">User Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= path==='/admin/products' ? 'active' : '' %>" href="/admin/products"> Admin Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/cart' ? 'active' : '' %>"  aria-current="page" href="/cart">Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= path === '/orders' ? 'active' : '' %>"  aria-current="page" href="/orders">Orders</a>
+        </li>
+        <%if(isAuthenticated){%>
+          <%}%>
+        <li class="nav-item">
+          <a class="nav-link <%= path==='/addProducts' ? 'active' : '' %>" href="/addProducts">Add Products</a>
+        </li>
+       
+       
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Authentication
+          </a>
+        
+          <%if(!isAuthenticated){%>
+            <%}%>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item  <%= path==='/addUsers' ? 'active' : '' %>" href="/addUsers">Registration</a></li>
+            <li><a class="dropdown-item   <%= path==='/loginForm' ? 'active' : '' %>" href="/loginForm">Login</a></li>
+            <li><a class="dropdown-item"  href="LogOut">Log Out</a></li>
+          </ul>
+          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
